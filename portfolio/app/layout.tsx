@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   description: "Modern & Minimal Portfolio - Dinesh Rajan",
 };
 
+// Disable static generation to prevent SSR issues with browser-only APIs
+export const dynamic = 'force-dynamic';
+
 export default function RootLayout({
   children,
 }: Readonly<{
