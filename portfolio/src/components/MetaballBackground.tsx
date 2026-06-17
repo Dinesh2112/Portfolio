@@ -64,7 +64,12 @@ function Scene() {
   const uniforms = useMemo(
     () => ({
       uTime: { value: 0.0 },
-      uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) }
+      uResolution: { 
+        value: new THREE.Vector2(
+          typeof window !== "undefined" ? window.innerWidth : 1000, 
+          typeof window !== "undefined" ? window.innerHeight : 1000
+        ) 
+      }
     }),
     []
   );

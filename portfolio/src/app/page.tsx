@@ -1,11 +1,13 @@
 "use client";
 
-import CustomCursor from "@/components/CustomCursor";
-import MetaballBackground from "@/components/MetaballBackground";
-import WebGLImageHover from "@/components/WebGLImageHover";
+import dynamic from "next/dynamic";
 import SplitTextReveal from "@/components/SplitTextReveal";
 import InfiniteMarquee from "@/components/InfiniteMarquee";
 import Preloader from "@/components/Preloader";
+
+const CustomCursor = dynamic(() => import("@/components/CustomCursor"), { ssr: false });
+const MetaballBackground = dynamic(() => import("@/components/MetaballBackground"), { ssr: false });
+const WebGLImageHover = dynamic(() => import("@/components/WebGLImageHover"), { ssr: false });
 
 export default function Home() {
   const projects = [
