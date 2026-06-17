@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import dynamic from "next/dynamic";
-
-const LenisProvider = dynamic(() => import("@/components/LenisScroll"), { ssr: false });
+import LenisProvider from "@/components/LenisScroll";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -24,7 +23,9 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body suppressHydrationWarning className={`${inter.variable} antialiased bg-background text-foreground`}>
         <LenisProvider>
-          {children}
+          <SmoothScroll>
+            {children}
+          </SmoothScroll>
         </LenisProvider>
       </body>
     </html>

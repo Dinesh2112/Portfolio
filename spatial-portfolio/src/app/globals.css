@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #050505;
+  --color-foreground: #ededed;
+  --color-accent: #3b82f6; /* Ocean Blue */
+  --color-accent-dim: rgba(59, 130, 246, 0.2);
+  --color-surface: #111111;
+  --color-surface-border: #222222;
+
+  --animate-marquee: marquee 25s linear infinite;
+  --animate-marquee2: marquee2 25s linear infinite;
+
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+  }
+  @keyframes marquee2 {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(0%); }
+  }
+}
+
+@layer base {
+  :root {
+    --background: #050505;
+    --foreground: #ededed;
+  }
+  
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-inter), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden; /* Prevent horizontal scroll on spatial canvas */
+  }
+}
+
+/* Custom Scrollbar for a premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #222222;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00f0ff;
+}
+
+/* Utility for glowing text */
+.text-glow {
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
