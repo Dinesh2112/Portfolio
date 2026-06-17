@@ -27,8 +27,7 @@ export default function SplitTextReveal({ text, delay = 0, className = "" }: Spl
       transition: {
         type: "spring" as const,
         damping: 20,
-        stiffness: 100,
-        ease: [0.76, 0, 0.24, 1]
+        stiffness: 100
       },
     },
     hidden: {
