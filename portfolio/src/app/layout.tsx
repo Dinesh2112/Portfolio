@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import dynamic from "next/dynamic";
-
-const LenisProvider = dynamic(() => import("@/components/LenisScroll"), { ssr: false });
+import LenisProvider from "@/components/LenisScroll";
 
 const inter = Inter({ 
   subsets: ["latin"],
