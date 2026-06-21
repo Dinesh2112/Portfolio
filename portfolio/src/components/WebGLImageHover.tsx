@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState, useMemo } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { useRef, useState, useMemo, Suspense } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
@@ -52,6 +52,7 @@ function Scene({ imagePath }: { imagePath: string }) {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
   const [hovered, setHover] = useState(false);
   const texture = useTexture(imagePath);
+  const { viewport } = useThree();
 
   const uniforms = useMemo(
     () => ({
@@ -80,7 +81,7 @@ function Scene({ imagePath }: { imagePath: string }) {
       onPointerOver={() => setHover(true)}
       onPointerOut={() => setHover(false)}
     >
-      <planeGeometry args={[1, 1, 32, 32]} />
+      <planeGeometry args={[viewport.width, viewport.height, 32, 32]} />
       <shaderMaterial
         ref={materialRef}
         vertexShader={vertexShader}
@@ -96,7 +97,9 @@ export default function WebGLImageHover({ imagePath, className = "" }: { imagePa
   return (
     <div className={`relative overflow-hidden ${className}`}>
       <Canvas camera={{ position: [0, 0, 1], fov: 50 }}>
-        <Scene imagePath={imagePath} />
+        <Suspense fallback={null}>
+          <Scene imagePath={imagePath} />
+        </Suspense>
       </Canvas>
     </div>
   );
