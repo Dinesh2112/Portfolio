@@ -7,6 +7,7 @@ import * as THREE from "three";
 const fragmentShader = `
 uniform float uTime;
 uniform vec2 uResolution;
+uniform vec3 uBgColor;
 varying vec2 vUv;
 
 // Distance field for a metaball
@@ -35,13 +36,12 @@ void main() {
     sum += metaball(uv, pos4, 0.03);
     sum += metaball(uv, pos5, 0.06);
 
-    // Exact background color: Vibrant Electric Blue
-    vec3 bgColor = vec3(0.0, 0.33, 1.0); // #0055FF
-    // Blob color: Pure Black
-    vec3 blobColor = vec3(0.06, 0.06, 0.06); // #111111
+    // Background color dynamically passed from active theme uniform
+    vec3 bgColor = uBgColor;
+    // Blob color: Deep Onyx
+    vec3 blobColor = vec3(0.04, 0.04, 0.04); 
 
     // Threshold the sum to create sharp, merging metaballs
-    // Smoothstep creates anti-aliased edges
     float t = smoothstep(0.98, 1.02, sum);
 
     vec3 finalColor = mix(bgColor, blobColor, t);
@@ -58,8 +58,10 @@ void main() {
 }
 `;
 
-function Scene() {
+function Scene({ themeColor }: { themeColor: string }) {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
+
+  const targetColor = useMemo(() => new THREE.Color(themeColor), [themeColor]);
 
   const uniforms = useMemo(
     () => ({
@@ -69,7 +71,8 @@ function Scene() {
           typeof window !== "undefined" ? window.innerWidth : 1000, 
           typeof window !== "undefined" ? window.innerHeight : 1000
         ) 
-      }
+      },
+      uBgColor: { value: new THREE.Color(themeColor) }
     }),
     []
   );
@@ -78,6 +81,9 @@ function Scene() {
     if (materialRef.current) {
       materialRef.current.uniforms.uTime.value = state.clock.elapsedTime;
       materialRef.current.uniforms.uResolution.value.set(window.innerWidth, window.innerHeight);
+      
+      // Smoothly interpolate shader background color to selected theme
+      materialRef.current.uniforms.uBgColor.value.lerp(targetColor, 0.05);
     }
   });
 
@@ -96,11 +102,11 @@ function Scene() {
   );
 }
 
-export default function MetaballBackground() {
+export default function MetaballBackground({ themeColor = "#2563EB" }: { themeColor?: string }) {
   return (
-    <div className="fixed inset-0 z-[-1] pointer-events-none bg-[#0055FF]">
+    <div className="fixed inset-0 z-[-1] pointer-events-none">
       <Canvas orthographic camera={{ position: [0, 0, 1], zoom: 1 }}>
-        <Scene />
+        <Scene themeColor={themeColor} />
       </Canvas>
     </div>
   );
