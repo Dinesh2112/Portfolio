@@ -65,7 +65,7 @@ export default function Home() {
       role: "Microservice Platform",
       desc: "A massive microservice-based recruitment platform supporting concurrent video interviews. Implemented custom email-primary JWT auth, WebRTC video calling, and system-wide audit logging across 30+ API endpoints.",
       tech: ["Next.js", "TypeScript", "PostgreSQL", "WebRTC"],
-      live: "https://zrooth-jobs-orpin.vercel.app/",
+      live: "http://zrooth-jobs.duckdns.org/",
       github: "",
       image: "/zrooth_brutalist_1781683826872.png",
       details: {
