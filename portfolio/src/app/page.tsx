@@ -60,6 +60,30 @@ export default function Home() {
 
   const projects: ProjectData[] = [
     {
+      id: "flux-edit",
+      title: "FluxEdit",
+      role: "AST Compiler & Visual Editor",
+      desc: "Zero-overhead in-browser visual AST editor for React & Vite with real-time disk sync. Surgically modifies JSX text, Tailwind utility classes, and component hierarchy on disk via Babel AST with 0 KB production bundle overhead.",
+      tech: ["React", "Vite", "Babel AST", "Tailwind CSS", "npm"],
+      live: "https://flux-edit-a3v4.vercel.app/",
+      github: "https://github.com/Dinesh2112/flux-edit",
+      image: "/notepad_brutalist_1781683850879.png",
+      details: {
+        overview: "FluxEdit is an open-source developer tool published on npm (flux-edit) that eliminates the friction of switching between browser DevTools and code editors by enabling direct visual editing of React JSX components with atomic disk writes.",
+        architecture: [
+          "Bite-sized Vite compiler plugin with conditional apply: 'serve' guaranteeing 0 KB added in production builds.",
+          "Surgical Babel AST patcher using @babel/parser, @babel/traverse, and magic-string to rewrite JSX nodes on disk without losing code formatting.",
+          "Enterprise security jail: canonical path traversal guards, localhost CSRF verification, and atomic temp-file swaps."
+        ],
+        features: [
+          "Double-click inline text editing with JSX escaping & loop array scope tracing.",
+          "Live Tailwind CSS reconciler supporting 4-corner radii and spacing tokens.",
+          "Drag-and-drop structural JSX sibling reordering with visual insertion bars.",
+          "Published open-source library on npm registry with 100% automated test coverage."
+        ]
+      }
+    },
+    {
       id: "zrooth",
       title: "Zrooth-Jobs",
       role: "Microservice Platform",
@@ -106,29 +130,6 @@ export default function Home() {
       }
     },
     {
-      id: "webeditor",
-      title: "Web Editor",
-      role: "UI Design Tool",
-      desc: "A Figma-like design tool in the browser — drag-and-drop canvas, real-time CSS property editing, hierarchical layer management, and responsive design controls; deployed with automated CI/CD.",
-      tech: ["React", "Node.js", "Express", "Vercel"],
-      live: "https://web-editor-opal.vercel.app/",
-      github: "",
-      image: "/notepad_brutalist_1781683850879.png",
-      details: {
-        overview: "Web Editor empowers users to visually design web layouts directly in the browser with real-time CSS code generation.",
-        architecture: [
-          "Canvas state management with undo/redo action trees.",
-          "Hierarchical DOM layer tree renderer.",
-          "Automated CI/CD deployment pipeline."
-        ],
-        features: [
-          "Drag and drop component positioning.",
-          "Live CSS property inspection and modification.",
-          "One-click HTML/CSS bundle export."
-        ]
-      }
-    },
-    {
       id: "gaming",
       title: "Gaming Market",
       role: "E-Commerce",
@@ -155,7 +156,7 @@ export default function Home() {
 
   const filteredProjects = activeFilterTab === "all"
     ? projects
-    : projects.filter((p) => p.id.includes(activeFilterTab) || (activeFilterTab === "fullstack" && (p.id === "zrooth" || p.id === "gaming")) || (activeFilterTab === "ai" && p.id === "brainstack") || (activeFilterTab === "tools" && p.id === "webeditor"));
+    : projects.filter((p) => p.id.includes(activeFilterTab) || (activeFilterTab === "fullstack" && (p.id === "zrooth" || p.id === "gaming")) || (activeFilterTab === "ai" && p.id === "brainstack") || (activeFilterTab === "tools" && p.id === "flux-edit"));
 
   const handleNavChange = (id: string) => {
     setActiveNavTab(id);

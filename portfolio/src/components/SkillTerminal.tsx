@@ -37,7 +37,7 @@ export default function SkillTerminal({ themeColor }: SkillTerminalProps) {
         response = "Languages & Tech: JavaScript, TypeScript, Python, React, Next.js, Django, PostgreSQL, WebGL, Three.js, Docker";
         break;
       case "projects":
-        response = "Live Works:\n- Zrooth-Jobs: Microservice Recruitment Platform\n- BrainStack.AI: Neural Assessment Engine\n- Web Editor: Browser UI Builder\n- Gaming Market: E-Commerce Platform";
+        response = "Live Works:\n- FluxEdit: Zero-Overhead AST Visual Editor & Vite Plugin\n- Zrooth-Jobs: Microservice Recruitment Platform\n- BrainStack.AI: Neural Assessment Engine\n- Gaming Market: E-Commerce Platform";
         break;
       case "experience":
         response = "Lawcrust Legal Technology — Software Engineer Intern & Team Lead (Jan 2026 - Present)";
