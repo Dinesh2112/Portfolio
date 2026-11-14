@@ -65,7 +65,7 @@ export default function Home() {
       role: "AST Compiler & Visual Editor",
       desc: "Zero-overhead in-browser visual AST editor for React & Vite with real-time disk sync. Surgically modifies JSX text, Tailwind utility classes, and component hierarchy on disk via Babel AST with 0 KB production bundle overhead.",
       tech: ["React", "Vite", "Babel AST", "Tailwind CSS", "npm"],
-      live: "https://flux-edit-a3v4.vercel.app/",
+      live: "https://flux-edit.vercel.app/",
       github: "https://github.com/Dinesh2112/flux-edit",
       image: "/notepad_brutalist_1781683850879.png",
       details: {

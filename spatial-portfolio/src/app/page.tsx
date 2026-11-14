@@ -10,6 +10,15 @@ import Preloader from "@/components/Preloader";
 export default function Home() {
   const projects = [
     {
+      title: "FluxEdit",
+      role: "AST Compiler & Visual Editor",
+      desc: "Zero-overhead in-browser visual AST editor for React & Vite with real-time disk sync. Surgically modifies JSX text, Tailwind utility classes, and component hierarchy on disk via Babel AST with 0 KB production bundle overhead.",
+      tech: ["React", "Vite", "Babel AST", "Tailwind CSS", "npm"],
+      live: "https://flux-edit.vercel.app/",
+      github: "https://github.com/Dinesh2112/flux-edit",
+      image: "/notepad_brutalist_1781683850879.png"
+    },
+    {
       title: "Zrooth-Jobs",
       role: "Microservice Platform",
       desc: "A massive microservice-based recruitment platform supporting concurrent video interviews. Implemented custom email-primary JWT auth, WebRTC video calling, and system-wide audit logging across 30+ API endpoints.",
@@ -26,15 +35,6 @@ export default function Home() {
       live: "https://brain-stack-lurb.vercel.app/",
       github: "https://github.com/Dinesh2112/Brain-Stack/tree/main",
       image: "/brainstack_brutalist_1781683840303.png" // Updated Brutalist Photo
-    },
-    {
-      title: "Web Editor",
-      role: "UI Design Tool",
-      desc: "A Figma-like design tool in the browser — drag-and-drop canvas, real-time CSS property editing, hierarchical layer management, and responsive design controls; deployed with automated CI/CD.",
-      tech: ["React", "Node.js", "Express", "Vercel"],
-      live: "https://web-editor-opal.vercel.app/",
-      github: "",
-      image: "/notepad_brutalist_1781683850879.png" // Updated Brutalist Photo
     },
     {
       title: "Gaming Market",
